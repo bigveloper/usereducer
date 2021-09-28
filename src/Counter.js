@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import React, { useReducer } from 'react';
 
 function reducer(state, action) {
     switch (action.type) {
@@ -10,5 +10,18 @@ function reducer(state, action) {
             return state;
     }
 }
+const Counter = () => {
+    const [state, dispatch] = useReducer(reducer, { value: 0 });
 
-export default ;
+    return (
+        <>
+            <p>
+                현재 카운터 값은 <b>{state.value}</b>입니다.
+            </p>
+            <button onClick={() => dispatch({ type: 'INCREMENT' })}>+1</button>
+            <button onClick={() => dispatch({ type: 'DECREMENT' })}>-1</button>
+        </>
+    );
+};
+
+export default Counter;
